@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dog Image Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+    	nav{
+    		background:#F26101;
+ 
+    	}
+    	.navbar-brand{
+    		margin: auto;
+    		font-weight: bold;
+    	}
+    	.card{
+    	box-shadow:0 0 15px rgba(0, 0, 0, 0.69);
+		object-fit: cover;
+    	}
+    	img{
+    		transition: 2s;
+    	}
+    	img:hover{
+    		scale: 1.1;
+    	}
+    </style>
+  </head>
+  <body>
+<nav class="navbar navbar-expand-lg">
+	<div class="container-fluid">
+  <a class="navbar-brand text-white"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy9vsQttPGUpub9C7hbbLsWBoQEkmBa6XO5w&s" width="50px" height="50px" style="border-radius: 50%">Random Dog Image Generator</a>
+</div>
+</nav>
+
+<div class="container mt-5">
+<div class="row justify-content-center">
+<div class="col-10 col-mb-6">
+<div class="card">
+	<div class="card-body">
+  <img id="img" class="card-img" src="" alt="Card image" width="200px" height="400px">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+    	
+let img = document.querySelector('#img');
+
+   fetch('https://dog.ceo/api/breeds/image/random')
+  .then(response => response.json())
+  .then((result) =>{
+   console.log(result.message)
+   img.src = result.message;
+
+})
+  .catch(error => console.log('error', error));        
+
+  
+    </script>
+  </body>
+</html>
